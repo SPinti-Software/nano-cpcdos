@@ -1,0 +1,63 @@
+## ##
+## Language: CpcdosC+
+## Author: SPinti Software
+## Contributors: 0v3rl0w
+## Website: https://cpcdos.net
+## ##
+
+syntax "cpcdosc+" "\.(cpc|CPC)$"
+comment "//"
+comment "REM/"
+comment "rem/"
+
+# Keywords
+icolor green "(^|\s)(TXT|CLS|FIX|SET|COULEURC|COLORF)\/"
+icolor green "(^|\s)(COULEURF|COLORB|EXE|CMD|CCP|AIDE)\/"
+icolor green "(^|\s)(HELP|POS|STOPK|STOP|SYS|ALLER|GOTO)\/"
+icolor green "(^|\s)(SI|IF|REP|DIR|COPIER|COPY|SUPPRIMER)\/"
+icolor green "(^|\s)(DELETE|RENOMMER|RENAME|DOSSIER|FOLDER|OUVRIR)\/"
+icolor green "(^|\s)(OPEN|ECRIRE|WRITE|FERMER|CLOSE|RETOUR|RETURN)\/"
+icolor green "(^|\s)(FONCTION|FUNCTION|DECLARER|DECLARE|PING|TELECHARGER)\/"
+icolor green "(^|\s)(DOWNLOAD|SERVEUR|SERVER|CLIENT|DEMARRER|START|IUG)\/"
+icolor green "(^|\s)(GUI|MESSAGE|MSGBOX|FENETRE|WINDOW|IMAGEBOX|PICTUREBOX)\/"
+icolor green "(^|\s)(BOUTON|BUTTON|TEXTEBLOC|TEXTBLOCK|CHECKBOX|BARREPROGRESSION)\/"
+icolor green "(^|\s)(PROGRESSBAR|END|TEXTEBOX|CREER|CREATE)\/"
+
+# Composed keywords
+icolor green "(FIN|END)\/\s(IF|SI|FUNCTION|FONCTION|FENETRE|WINDOW|BOUTON|BUTTON|TEXTEBOX)"
+icolor green "(FIN|END)\/\s(IMAGEBOX|PICTUREBOX|TEXTEBLOC|TEXTBLOCK|CHECKBOX|BARREPROGRESSION|PROGRESSBAR)"
+
+# Arguments
+icolor magenta "\s\/(DEBUG|#R|F:|WIN32|LLVM|THREAD|STOPK|S|Q|TOUCHE|ATOUCHE|LANG|FIX.NIVEAU|SET.LEVEL)"
+icolor magenta "\s\/(CHANGE|PAUSE|OPTIMISATION|DEBUT_SECTION_CRITIQUE|FIN_SECTION_CRITIQUE|OPTIMIZATION)"
+icolor magenta "\s\/(BEGIN_CRITICAL_SECTION|LIGNE|LINE|TEXTE|TEXT|BIN|APP|BINAPP|APPBIN|MEM|PROCESSUS)"
+icolor magenta "\s\/(ARRETER|DEBUG|REDEMARRER|VEILLE|MEMU|POLICE|DEBUG|ECRAN|WRP|BITMAP|OS|LISTVAR|MEM)"
+icolor magenta "\s\/(PROCESS|SHUTDOWN|REBOOT|ENABLE|DISABLE|LIST|SERVER|CPINTICORE|COM[0-9]|TEST|SCREEN)"
+icolor magenta "\s\/(PTR|HEXAPTR|BITMAPS|OBTENIR|GET|PTRBYHANDLE|IDBYHANDLE|LISTE|SIZE|TAILLE|RECHARGER|RELOAD)"
+icolor magenta "\s\/(GARBAGECOLLECTOR|NB|PID:|TID:|HANDLE:|C:|SRVINFO|\+?SRVINFO|TEMPR?|TCP:|MODE:|ENVOYER:)"
+icolor magenta "\s\/(ATTENDRE|SEND:|RECEIVE:|WAIT|MULTI-PICTUREBOX|MULTI|SANSOS|WITHOUTOS|CONSOLE|LC|TITRE:)"
+icolor magenta "\s\/(ERREUR:|ERROR:|TITLE:|TYPE:|EVENEMENT:|EVENT:|NOM:|NAME:|MODIF:|COM|INIT|UPDATE)"
+
+# parameters GUI
+icolor brightgreen "\s(.HANDLE|.PARAMETERS|.PARAMETRES|.PX|.PY|.TX|.TY|.IMAGE|.IMGTITLE|.OPACITE|.COULEURFENETRE)"
+icolor brightgreen "\s(.COLORWINDOW|.TYPE|.BACKCOLOR|.TEXTCOLOR|.COULEURTEXTE|.COULEURFOND|.EVENEMENT|.EVENT|.IMGTITRE)"
+icolor brightgreen "\s(.COULEURTITRE|COLORTITLE|.TITRE|.TITLE)"
+
+# The level keyword
+icolor brightred "(LEVEL|NIVEAU)\([0-9]\)"
+
+# Comments
+color brightblue "(^|[[:blank:]])\/\/.*"
+color brightblue "(^|[[:blank:]])REM\/.*"
+color brightblue "(^|[[:blank:]])rem\/.*"
+
+# Numbers and fixed value
+icolor red "\s(MAX|STD|MIN|CCP|TELNET|ECHO|TEL|VAR|GET)\s"
+
+# Variable
+icolor yellow "%[A-Z_][A-Z0-9_.]+%"
+icolor yellow "@#[A-Z_][A-Z0-9_.]+"
+icolor yellow "\$\{[A-Z_][A-Z0-9_.]\}"
+
+# Strings
+color cyan "<[^= 	]*>" ""(\\.|[^"])*""
